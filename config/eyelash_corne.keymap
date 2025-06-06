@@ -31,6 +31,15 @@
 
 #define QUICK_TAP_MS 175
 
+
+ZMK_TAP_DANCE(copy_cut, bindings = <&kp LC(INS)>, <&kp LC(X)>;
+              tapping-term-ms = <150>;)
+ZMK_COMBO(copy_cut, &copy_cut,   LB2 LB3, ALL)  // copy on tap, cut on double-tap, active on all layers
+ZMK_COMBO(paste,    &kp LC(V), LB1 LB2, ALL)
+ZMK_COMBO(undo ,    &kp LC(Z), LB4 LB3, ALL)
+ZMK_COMBO(redo ,    &kp LC(LS(Z)), LB4 LB1, ALL)
+ZMK_COMBO(escape ,  &kp ESC, LT5 LT4, ALL)
+
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
 
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
@@ -106,9 +115,6 @@
         <&macro_param_1to2>,
         <&as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
     };
-    // Combos
-    ZMK_COMBO(copy,  &kp LC(C), LB2 LB3, ALL);
-    ZMK_COMBO(paste, &kp LC(V), LB1 LB2, ALL);
 
     keymap {
         compatible = "zmk,keymap";
