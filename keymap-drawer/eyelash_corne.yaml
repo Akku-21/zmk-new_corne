@@ -1,55 +1,55 @@
 layout: {zmk_keyboard: eyelash_corne}
 layers:
-  QWERTY:
-  - $$mdi:keyboard-tab$$
-  - Q
-  - W
-  - E
-  - R
-  - T
+  NEO L1:
+  - $$mdi:keyboard-esc$$
+  - '&as X'
+  - '&as V'
+  - '&as L'
+  - '&as C'
+  - '&as W'
   - $$mdi:arrow-up-bold$$
-  - Y
-  - U
-  - I
-  - O
-  - P
-  - {t: '$$mdi:backspace$$', type: backspace}
-  - '&td0'
-  - A
-  - S
-  - D
-  - F
-  - G
+  - '&as K'
+  - '&as H'
+  - '&as G'
+  - '&as F'
+  - '&as Q'
+  - '&as S'
+  - $$mdi:keyboard-tab$$
+  - '&as U'
+  - '&as I'
+  - '&as A'
+  - '&as E'
+  - '&as O'
   - $$mdi:arrow-left-bold$$
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - $$mdi:arrow-right-bold$$
-  - H
-  - J
-  - K
-  - L
-  - {t: ;, s: ':'}
-  - {t: '''', s: '"'}
+  - '&as S'
+  - '&as N'
+  - '&as R'
+  - '&as T'
+  - '&as D'
+  - '&as Y'
   - $$mdi:apple-keyboard-control$$
-  - Z
-  - X
-  - C
-  - V
-  - B
+  - '&as U'
+  - '&as O'
+  - '&as A'
+  - '&as P'
+  - '&as Z'
   - $$mdi:keyboard-space$$
   - $$mdi:arrow-down-bold$$
-  - N
-  - M
+  - '&as B'
+  - '&as M'
   - {t: ',', s: <}
   - {t: ., s: '>'}
-  - {t: /, s: '?'}
-  - $$mdi:keyboard-esc$$
-  - LGUI
-  - NUMBER
-  - {t: '$$mdi:keyboard-space$$', h: Fn}
-  - {t: '$$mdi:keyboard-return$$', h: Fn}
-  - SYMBOL
+  - '&as J'
+  - NEO L3
+  - $$mdi:apple-keyboard-control$$
+  - NEO L2
+  - {t: '$$mdi:keyboard-space$$', h: NEO L4}
+  - {t: '$$mdi:keyboard-return$$', h: NEO L4}
+  - NEO L3
   - $$mdi:apple-keyboard-option$$
-  NUMBER:
+  NEO L2:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '1', s: '!'}
   - {t: '2', s: '@'}
@@ -98,7 +98,7 @@ layers:
   - INS
   - $$mdi:backspace-reverse-outline$$
   - {t: '$$mdi:transfer$$', type: trans}
-  SYMBOL:
+  NEO L3:
   - {t: '$$mdi:transfer$$', type: trans}
   - '!'
   - '@'
@@ -140,14 +140,14 @@ layers:
   - '{'
   - '}'
   - '|'
-  - '~'
+  - {t: '~', type: held}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:keyboard-space$$
   - {t: '$$mdi:keyboard-return$$', type: enter}
-  - {type: held}
+  - {type: held alternate}
   - {t: '$$mdi:transfer$$', type: trans}
-  Fn:
+  NEO L4:
   - '&studio_unlock'
   - F1
   - F2
