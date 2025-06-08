@@ -7,6 +7,8 @@ manifest:
       url-base: https://github.com/dsifry
     - name: urob
       url-base: https://github.com/urob
+    - name: m165437
+      url-base: https://github.com/M165437
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -30,7 +32,9 @@ manifest:
     - name: zmk-tri-state
       remote: urob
       revision: main
-
+    - name: nice-view-gem
+      remote: m165437
+      revision: main
     - name: zephyr
       remote: urob
       revision: v3.5.0+zmk-fixes
