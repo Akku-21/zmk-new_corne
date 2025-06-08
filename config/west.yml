@@ -15,13 +15,13 @@ manifest:
     - name: nice-view-mod
       remote: dsifry
       revision: main
-    - name: zmk-helpers
-      remote: urob
-      revision: main
     - name: zmk-adaptive-key
       remote: urob
       revision: main
     - name: zmk-auto-layer
+      remote: urob
+      revision: main
+    - name: zmk-helpers
       remote: urob
       revision: main
     - name: zmk-leader-key
