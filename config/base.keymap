@@ -203,6 +203,11 @@ ZMK_MACRO(leader_sft, bindings = <&sk LSHFT &leader>;)
 
 ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS) // FN + NUM --> SYS.
 
+#ifndef ZMK_BASE_LAYER
+  #define ZMK_BASE_LAYER(name, LT, RT, LM, RM, LB, RB, LH, RH, LS0, LS13, LS4, sensors))                 \
+      ZMK_LAYER(name, LT RT LM RM LB RB LH RH LS0 LS13 LS4 sensors)
+#endif
+
 ZMK_BASE_LAYER(Base,
 // ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮          ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮
     &kp ESC         &kp X           &kp V           &kp L           &kp C           &kp W           ,           &kp K           &kp H           &kp G           &kp F           &kp Q           &kp S         ,

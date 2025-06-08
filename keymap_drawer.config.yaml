@@ -1,9 +1,8 @@
 parse_config:
-  zmk_additional_includes:
-    - "modules/zmk/helpers/include"
+  zmk_additional_includes: ["zmk-helpers/include"]
 
   zmk_preamble: |
-    #include <zmk-helpers/key-labels/eyelash42.h>
+    #include <zmk_helpers/key-labels/eyelash42.h>
     #define CONFIG_WIRELESS
 
   raw_binding_map:
