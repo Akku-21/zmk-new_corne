@@ -121,127 +121,16 @@ jobs:
         id: draw
         continue-on-error: ${{ !inputs.fail_on_error }}
         run: |
-          [ "${{ inputs.debug_mode }}" == "true" ] && set -x
+            set -euo pipefail
 
-          get_args() {
-              local keyboard=$2
-              local output=()
+            # Define variables
+            DRAW_DIR="./keymap-drawer"
+            CONFIG_DIR="./config"
 
-              eval set -- "$1"
-              for arg; do
-                  local key=${arg%%:*}
-                  local val=${arg#*:}
-                  if [ "$key" = "$keyboard" ]; then
-                      output+=("$val")
-                      break
-                  fi
-              done
-              echo "${output[@]}"
-          }
-
-          check_for_layout_args() {
-              local args=("$@")
-
-              for val in "-j" "--qmk-info-json" "-k" "--qmk-keyboard" "-z" "--zmk-keyboard" "-d" "--dts-layout" "--ortho-layout" "-n" "--cols-thumbs-notation"; do
-                  for item in "${args[@]}"; do
-                      if [ "$val" = "$item" ]; then return 0; fi
-                  done
-              done
-
-              return 1
-          }
-
-          shopt -s nullglob extglob
-
-          artifacts=()
-          error_occurred=0
-          mkdir -p "${{ inputs.output_folder }}"
-
-          config_path="${{ inputs.config_path }}"
-          [ -e "$config_path" ] && config_arg=(-c "$config_path") || config_arg=()
-          echo "INFO: using config args:" "${config_arg[@]}"
-          ls -la .
-          # The following line is only for debugging specific directories if they exist
-          if [ -d "/home/runner/work/zmk-new_corne/zmk-new_corne/zmk-helpers/include" ]; then
-            ls -la /home/runner/work/zmk-new_corne/zmk-new_corne/zmk-helpers/include
-          fi
-          [ "${{ inputs.debug_mode }}" == "true" ] && debug_arg="-d" || debug_arg=""
-
-          for keymap_file in ${{ inputs.keymap_patterns }}; do
-              keyboard=$(basename -s .keymap "$keymap_file")
-              echo "INFO: drawing for $keyboard"
-
-              IFS=" " read -r -a parse_args        <<< "$(get_args "${{ inputs.parse_args }}" "$keyboard")"
-              echo "INFO:   got extra parse args:"       "${parse_args[@]}"
-              IFS=" " read -r -a draw_args         <<< "$(get_args "${{ inputs.draw_args }}" "$keyboard")"
-              echo "INFO:   got extra draw args:"        "${draw_args[@]}"
-              
-              # Apply keyboard override if specified
-              if [ -n "${{ inputs.keyboard_override }}" ]; then
-                  echo "INFO:   overriding keyboard to ${{ inputs.keyboard_override }}"
-                  draw_args+=(-k "${{ inputs.keyboard_override }}")
-              fi
-              IFS=" " read -r -a extra_keymap_yaml <<< "$(get_args "${{ inputs.extra_keymap_yaml }}" "$keyboard")"
-              echo "INFO:   got extra keymap YAML args:" "${extra_keymap_yaml[@]}"
-
-              json_path="${{ inputs.json_path }}"
-              if check_for_layout_args "${draw_args[@]}"; then
-                  echo "INFO:   found layout specifiers in draw args"
-              elif [ -n "$json_path" ] && [ -f "$json_path/${keyboard}.json" ]; then
-                  echo "INFO:   found $json_path/${keyboard}.json";
-                  draw_args+=(-j "$json_path/${keyboard}.json")
-              else
-                  dts_candidates=({,config/}boards/*/*/${keyboard}-layout{,s}.dtsi)
-                  if [ ${#dts_candidates[@]} -gt 0 ]; then
-                      echo "INFO:   found ${dts_candidates[0]}";
-                      draw_args+=(-d "${dts_candidates[0]}")
-                  fi
-              fi
-
-              tmp_yaml=$(mktemp)
-              tmp_svg=$(mktemp)
-
-              # Handle normal parsing or parsing with virtual combos layer
-              if [ "${{ inputs.process_combos }}" == "true" ]; then
-                  echo "INFO:   processing with virtual Combos layer"
-                  if keymap $debug_arg "${config_arg[@]}" parse -z "$keymap_file" --virtual-layers Combos "${parse_args[@]}" >"$tmp_yaml"; then
-                      mv "$tmp_yaml" "${{ inputs.output_folder }}/$keyboard.yaml"
-                      # Process combos with yq
-                      echo "INFO:   setting all combos to Combos layer with yq"
-                      yq -Yi '.combos.[].l = ["Combos"]' "${{ inputs.output_folder }}/$keyboard.yaml"
-                      artifacts+=("${{ inputs.output_folder }}/$keyboard.yaml")
-                  else
-                      echo "ERROR: parsing failed for $keyboard!"
-                      error_occurred=1
-                      continue
-                  fi
-              else
-                  # Standard parsing without virtual combos layer
-                  if keymap $debug_arg "${config_arg[@]}" parse -z "$keymap_file" "${parse_args[@]}" >"$tmp_yaml"; then
-                      mv "$tmp_yaml" "${{ inputs.output_folder }}/$keyboard.yaml"
-                      artifacts+=("${{ inputs.output_folder }}/$keyboard.yaml")
-                  else
-                      echo "ERROR: parsing failed for $keyboard!"
-                      error_occurred=1
-                      continue
-                  fi
-              fi
-
-              if keymap $debug_arg "${config_arg[@]}" draw "${{ inputs.output_folder }}/$keyboard.yaml" "${extra_keymap_yaml[@]}" "${draw_args[@]}" >"$tmp_svg"; then
-                  mv "$tmp_svg" "${{ inputs.output_folder }}/$keyboard.svg"
-                  artifacts+=("${{ inputs.output_folder }}/$keyboard.svg")
-              else
-                  echo "ERROR: drawing failed for $keyboard!"
-                  error_occurred=1
-              fi
-          done
-
-          joined_artifacts=$(printf '"%s", ' "${artifacts[@]}")
-          printf 'artifacts=[%s]\n' "${joined_artifacts%, }" >> "$GITHUB_OUTPUT"
-
-          if [ $error_occurred -eq 1 ]; then
-              exit 1
-          fi
+            # Run commands with the variables
+            keymap -c "keymap_drawer.config.yaml" parse -z "${CONFIG_DIR}/eyelash_corne.keymap" --virtual-layers Combos > "${DRAW_DIR}/base.yaml"
+            yq -Yi '.combos.[].l = ["Combos"]' "${DRAW_DIR}/base.yaml"
+            keymap -c "keymap_drawer.config.yaml" draw "${DRAW_DIR}/base.yaml" -k "ferris/sweep" > "${DRAW_DIR}/base.svg"
 
       - name: Get last commit message
         id: last_commit_message
