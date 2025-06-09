@@ -54,8 +54,14 @@ jobs:
           config_path="keymap_drawer.config.yaml"
           output_folder="keymap-drawer"
 
-          # Process every keymap file in config directory
-          for keymap_file in config/*corne*.keymap; do
+          # Process every keymap file in config directory except base.keymap
+          for keymap_file in config/*.keymap; do
+            # Skip base.keymap
+            if [[ $(basename "$keymap_file") == "base.keymap" ]]; then
+              echo "Skipping base.keymap"
+              continue
+            fi
+
             keyboard=$(basename -s .keymap "$keymap_file")
             echo "Drawing keymap for $keyboard"
             echo "Using keymap file: $keymap_file"
