@@ -1,0 +1,101 @@
+name: Draw KeymapMore actions
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/draw2.yml"
+      - "keymap_drawer.config.yaml"
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          submodules: recursive
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y yq
+          pipx install keymap-drawer
+
+      - name: Create output directory
+        run: mkdir -p keymap-drawer
+
+      - name: List keymap files
+        run: |
+          echo "Found keymap files:"
+          find config -name "*.keymap" -type f | sort
+
+      - name: Process and Draw Keymap
+        run: |
+          #!/usr/bin/env bash
+          set -euo pipefail
+
+          # Debug output
+          echo "Current directory: $(pwd)"
+          echo "Listing config directory:"
+          ls -la config/
+
+          # Verify config file exists
+          if [ -f "keymap_drawer.config.yaml" ]; then
+            echo "Config file found"
+            cat keymap_drawer.config.yaml | head -n 20
+          else
+            echo "Config file not found!"
+            exit 1
+          fi
+
+          config_path="keymap_drawer.config.yaml"
+          output_folder="keymap-drawer"
+
+          # Process every keymap file in config directory
+          for keymap_file in config/*corne*.keymap; do
+            keyboard=$(basename -s .keymap "$keymap_file")
+            echo "Drawing keymap for $keyboard"
+            echo "Using keymap file: $keymap_file"
+
+            # Debug the keymap file content
+            echo "First 30 lines of keymap file:"
+            head -n 30 "$keymap_file"
+
+            # Parse the base keymap with Combos as virtual layer
+            echo "Running parse command..."
+            keymap -c "$config_path" parse -z "$keymap_file" --virtual-layers Combos > "$output_folder/$keyboard.yaml"
+
+            # Verify parse output
+            echo "Parse output:"
+            ls -la "$output_folder/$keyboard.yaml"
+            head -n 20 "$output_folder/$keyboard.yaml"
+
+            # Modify the combos to assign them to the Combos layer
+            echo "Modifying combos..."
+            yq -Yi '.combos.[].l = ["Combos"]' "$output_folder/$keyboard.yaml"
+
+            # Draw the keymap for the keyboard
+            echo "Drawing keymap..."
+            keymap_type="$keyboard"
+            if [[ "$keyboard" != "corne" ]]; then
+              keymap_type="ferris/sweep"
+            fi
+            echo "Using keyboard type: $keymap_type"
+
+            keymap -c "$config_path" draw "$output_folder/$keyboard.yaml" -k "$keymap_type" > "$output_folder/$keyboard.svg"
+
+            echo "Successfully generated $output_folder/$keyboard.svg"
+          done
+
+          # List all generated files
+          echo "Generated files:"
+          ls -la "$output_folder/"
+
+      - name: Commit updated images
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          file_pattern: 'keymap-drawer/*.svg keymap-drawer/*.yaml'
+          commit_message: "[Draw] ${{ github.event.head_commit.message || 'Update keymap drawings' }}"
