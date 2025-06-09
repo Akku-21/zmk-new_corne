@@ -51,13 +51,9 @@
 
 /* Homerow mods */
 
-#define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
-#define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
-// #ifndef LH2
-  // #define THUMBS LH1 LH0 RH0 RH1         // Thumbs on 34 keys.
-// #else
-  #define THUMBS LH2 LH1 LH0 RH0 RH1 RH2 // Thumbs on 36+ keys.
-// #endif
+#define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5
+#define THUMBS LH2 LH1 LH0 RH0 RH1 RH2 // Thumbs on 36+ keys.
 
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
   ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";            \
@@ -141,7 +137,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
 ZMK_TRI_STATE(
     smart_mouse, bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
     ignored-key-positions =
-        <LT1 LT2 LH0 LH1 RT1 RT2 RT3 RM0 RM1 RM2 RM3 RM4 RB1 RB2 RB3 RH0 RH1>;
+        <LT1 LT2 LH0 LH1 RT1 RT2 RT3 RM0 RM1 RM2 RM3 RM4 RB1 RB2 RB3 RH0 RH1 JS0 JS1 JS2 JS3 JS4>;
     ignored-layers = <MOUSE NAV FN>;)
 
 /* Custom behaviors */
@@ -210,11 +206,11 @@ ZMK_CONDITIONAL_LAYER(sys, FN NUM, SYS) // FN + NUM --> SYS.
 
 ZMK_BASE_LAYER(Base,
 // ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮          ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮
-    &kp ESC         &kp X           &kp V           &kp L           &kp C           &kp W           ,           &kp K           &kp H           &kp G           &kp F           &kp Q           &kp SQT         ,
+    &kp ESC         &kp X           &kp V           &kp L           &kp C           &kp W           ,           &kp K           &kp H           &kp G           &kp F           &kp Q           &kp SQT        ,
 // ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤
-    &kp TAB         &hml LGUI U     &hml LALT I      &hml LSHFT A    &hml LCTRL E   &kp O          ,           &kp S           &hmr LCTRL N    &hmr RSHFT R    &hmr LALT T    &hmr LGUI D      &kp Y          ,
+    &kp TAB         &hml LGUI U     &hml LALT I      &hml LSHFT A    &hml LCTRL E   &kp O          ,           &kp S           &hmr LCTRL N    &hmr RSHFT R    &hmr LALT T      &hmr LGUI D     &kp Y          ,
 // ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤
-     &kp LCTRL       &kp U           &kp O           &kp A           &kp P           &kp Z          ,           &kp B           &kp M           &comma_morph    &dot_morph       &qexcl          &copy_cut    ,
+     &kp LCTRL       &kp U           &kp O           &kp A           &kp P           &kp Z          ,           &kp B           &kp M           &comma_morph    &dot_morph      &kp J           &qexcl         ,
 // ╰───────────────┴───────────────┴───────────────┼───────────────┼───────────────┼───────────────┤          ├───────────────┼───────────────┼───────────────┼───────────────┴───────────────┴───────────────╯
                                                     ___             &lt FN RET      &lt_spc NAV 0   ,          &lt_spc NAV 0    SMART_NUM       MAGIC_SHIFT    ,
                                                  //╰───────────────┴───────────────┴───────────────╯          ╰───────────────┴───────────────┴───────────────╯
