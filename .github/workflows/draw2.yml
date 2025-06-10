@@ -129,7 +129,7 @@ jobs:
             # Run commands with the variables
             keymap -c "keymap_drawer.config.yaml" parse -z "${CONFIG_DIR}/eyelash_corne.keymap" --virtual-layers Combos > "${{ inputs.output_folder }}/base.yaml"
             yq -Yi '.combos.[].l = ["Combos"]' "${{ inputs.output_folder }}/base.yaml"
-            keymap -c "keymap_drawer.config.yaml" draw "${{ inputs.output_folder }}/base.yaml" > "${{ inputs.output_folder }}/base.svg"
+            keymap -c "keymap_drawer.config.yaml" draw "${{ inputs.output_folder }}/base.yaml" > "${{ inputs.output_folder }}/eyelash_corne_seperate_combo_layer.svg"
 
       - name: Get last commit message
         id: last_commit_message
