@@ -1,0 +1,410 @@
+layout: {zmk_keyboard: eyelash_corne, layout_name: default_layout}
+layers:
+  Base:
+    - Esc
+    - X
+    - V
+    - L
+    - C
+    - W
+    - ↑
+    - K
+    - H
+    - G
+    - F
+    - Q
+    - ''''
+    - Tab
+    - {t: U, h: Gui}
+    - {t: I, h: Alt}
+    - {t: A, h: Shift}
+    - {t: E, h: Ctrl}
+    - O
+    - ←
+    - ENTER
+    - →
+    - S
+    - {t: N, h: Ctrl}
+    - {t: R, h: Shift}
+    - {t: T, h: Alt}
+    - {t: D, h: Gui}
+    - Y
+    - Ctrl
+    - U
+    - O
+    - A
+    - P
+    - Z
+    - PLAY PAUSE
+    - ↓
+    - B
+    - M
+    - {t: ',', s: ;}
+    - {t: ., s: ':'}
+    - J
+    - {t: '?', s: '!'}
+    - {type: trans}
+    - {t: Enter, h: Fn}
+    - {t: Spc, h: Nav, s: Sentence}
+    - {t: Spc, h: Nav, s: Sentence}
+    - {t: Numword, h: Num, s: Sticky Num}
+    - {t: Magic, h: Shift}
+  Nav:
+    - {type: trans}
+    - Alt+F4
+    - {type: trans}
+    - Prev Win
+    - Next Win
+    - {type: trans}
+    - {type: trans}
+    - PgUp
+    - {t: Bspc, h: Ctl+Bspc}
+    - {t: ↑, h: Ctl+Home}
+    - {t: Del, h: Ctl+Del}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {t: Gui, h: sticky}
+    - {t: Alt, h: sticky}
+    - {t: Shift, h: sticky}
+    - {t: Ctrl, h: sticky}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - PgDn
+    - {t: ←, h: Home}
+    - {t: ↓, h: Ctl+End}
+    - {t: →, h: End}
+    - Enter
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - Ins
+    - Tab
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: held}
+    - {type: trans}
+    - CANCEL
+    - {type: trans}
+  Fn:
+    - {type: trans}
+    - F12
+    - F7
+    - F8
+    - F9
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - $$mdi:skip-backward$$
+    - $$mdi:volume-high$$
+    - $$mdi:skip-forward$$
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {t: F11, h: Gui}
+    - {t: F4, h: Alt}
+    - {t: F5, h: Shift}
+    - {t: F6, h: Ctrl}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {t: Prev Desk, h: Ctrl}
+    - {t: '$$mdi:volume-medium$$', h: Shift}
+    - {t: Next Desk, h: Alt}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - F10
+    - F1
+    - F2
+    - F3
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - Pin App
+    - Pin Win
+    - Alt+`
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: held}
+    - {type: trans}
+    - $$mdi:volume-off$$
+    - $$mdi:play-pause$$
+    - {type: trans}
+  Num:
+    - {type: trans}
+    - {type: trans}
+    - '7'
+    - '8'
+    - '9'
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - '7'
+    - '8'
+    - '9'
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {t: '0', h: Gui}
+    - {t: '4', h: Alt}
+    - {t: '5', h: Shift}
+    - {t: '6', h: Ctrl}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {t: '4', h: Ctrl}
+    - {t: '5', h: Shift}
+    - {t: '6', h: Alt}
+    - {t: '0', h: Gui}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - '1'
+    - '2'
+    - '3'
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - '1'
+    - '2'
+    - '3'
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: held}
+    - {type: trans}
+  Sys:
+    - BT 1
+    - BT 2
+    - BT 3
+    - BT 4
+    - {t: BT, h: '4'}
+    - BT CLR
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - Boot
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - Boot
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - Reset
+    - {type: trans}
+    - {type: trans}
+    - Reset
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: held}
+    - {type: trans}
+    - {type: trans}
+    - {type: held}
+    - {type: trans}
+  Mouse:
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - Mouse ↑
+    - {type: trans}
+    - PgUp
+    - Mouse ↑
+    - PgDn
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - Mouse ←
+    - Left Click
+    - Mouse →
+    - Scroll ←
+    - Mouse ←
+    - Mouse ↓
+    - Mouse →
+    - Scroll →
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - Spc
+    - Mouse ↓
+    - {type: trans}
+    - Left Click
+    - Middle Click
+    - Right Click
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - Scroll ↑
+    - Scroll ↓
+    - {type: trans}
+  Combos: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
+    '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
+    '', '', '', '', '', '', '', '', '', '']
+combos:
+  - p: [2, 3]
+    k: Esc
+    l: [Combos]
+  - p: [3, 4]
+    k: Smart Mouse
+    l: [Combos]
+  - p: [15, 16]
+    k: Tab
+    l: [Combos]
+  - p: [16, 17]
+    k: Leader
+    l: [Combos]
+  - p: [15, 16, 17]
+    k: Shift+Leader
+    l: [Combos]
+    a: top
+    o: 1.35
+  - p: [30, 32]
+    k: Cut
+    l: [Combos]
+    a: bottom
+    o: 0.15
+  - p: [30, 31]
+    k: Copy
+    l: [Combos]
+  - p: [31, 32]
+    k: Paste
+    l: [Combos]
+  - p: [8, 9]
+    k: Bspc
+    l: [Combos]
+  - p: [9, 10]
+    k: Del
+    l: [Combos]
+  - p: [23, 24]
+    k: {t: (, right: <}
+    l: [Combos]
+  - p: [24, 25]
+    k: {t: ), right: '>'}
+    l: [Combos]
+  - p: [23, 24]
+    k: <
+    l: [Combos]
+    hidden: true
+  - p: [24, 25]
+    k: '>'
+    l: [Combos]
+    hidden: true
+  - p: [37, 38]
+    k: {t: '[', right: '{'}
+    l: [Combos]
+  - p: [38, 39]
+    k: {t: ']', right: '}'}
+    l: [Combos]
+  - p: [37, 38]
+    k: '{'
+    l: [Combos]
+    hidden: true
+  - p: [38, 39]
+    k: '}'
+    l: [Combos]
+    hidden: true
+  - p: [2, 15]
+    k: '@'
+    l: [Combos]
+  - p: [3, 16]
+    k: '#'
+    l: [Combos]
+  - p: [4, 17]
+    k: $
+    l: [Combos]
+  - p: [5, 18]
+    k: '%'
+    l: [Combos]
+  - p: [15, 30]
+    k: '`'
+    l: [Combos]
+  - p: [16, 31]
+    k: \
+    l: [Combos]
+  - p: [17, 32]
+    k: '='
+    l: [Combos]
+  - p: [18, 33]
+    k: '~'
+    l: [Combos]
+  - p: [7, 22]
+    k: ^
+    l: [Combos]
+  - p: [8, 23]
+    k: +
+    l: [Combos]
+  - p: [9, 24]
+    k: '*'
+    l: [Combos]
+  - p: [10, 25]
+    k: '&'
+    l: [Combos]
+  - p: [22, 36]
+    k: _
+    l: [Combos]
+  - p: [23, 37]
+    k: '-'
+    l: [Combos]
+  - p: [24, 38]
+    k: /
+    l: [Combos]
+  - p: [25, 39]
+    k: '|'
+    l: [Combos]
