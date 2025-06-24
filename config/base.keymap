@@ -13,7 +13,6 @@
 #endif
 
 #include <dt-bindings/zmk/ext_power.h>
-#include <dt-bindings/zmk/rgb.h>
 //Linux
 #define HOST_OS 1
 #include "zmk-helpers/helper.h"
@@ -71,10 +70,10 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
 
 /* Combos, leader key sequences, mouse emulation */
 
-
-#include "combos.dtsi" // .
+#include "combos.dtsi"
 #include "mouse.dtsi"
 #include "leader.dtsi"
+#include "rgb.dtsi"
 
 /* Nav cluster */
 
@@ -288,9 +287,9 @@ ZMK_BASE_LAYER(Sys,
 // ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮          ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮
      &bt BT_SEL 0   &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &bt BT_CLR     ,           ___            ___             ___             ___             ___             ___            ,
 // ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤
-    RGB_ON          RGB_HUI         RGB_SAI         RGB_BRI         RGB_SPI         &bootloader    ,           &bootloader     RGB_EFF         ___             ___             ___             ___            ,
+    CRGB_ON         CRGB_HUI        CRGB_SAI        CRGB_BRI        CRGB_SPI        &bootloader    ,           &bootloader     CRGB_EFF        ___             ___             ___             ___            ,
 // ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤
-    RGB_OFF         RGB_HUD         RGB_SAD         RGB_BRD         RGB_SPD         &sys_reset     ,           &sys_reset      RGB_EFR         ___             ___             ___             ___            ,
+    CRGB_OFF        CRGB_HUD        CRGB_SAD        CRGB_BRD        CRGB_SPD        &sys_reset     ,           &sys_reset      CRGB_EFR        ___             ___             ___             ___            ,
 // ╰───────────────┴───────────────┴───────────────┼───────────────┼───────────────┼───────────────┤          ├───────────────┼───────────────┼───────────────┼───────────────┴───────────────┴───────────────╯
                                                     ___             ___             ___            ,           ___             ___             ___            ,
                                                  //╰───────────────┴───────────────┴───────────────╯          ╰───────────────┴───────────────┴───────────────╯
