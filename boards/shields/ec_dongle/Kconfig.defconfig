@@ -2,7 +2,7 @@ if SHIELD_EYELASH_CORNE_DONGLE
 
 # Max 16 characters in keyboard name
 config ZMK_KEYBOARD_NAME
-    default "Eyelash Corne Dongle"
+    default "Corne"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y

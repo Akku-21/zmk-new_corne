@@ -17,4 +17,4 @@ include:
   - board: eyelash_corne_left
     shield: settings_reset
   - board: seeeduino_xiao_ble
-    shield: eyelash_corne_dongle
+    shield: ec_dongle
