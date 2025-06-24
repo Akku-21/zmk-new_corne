@@ -30,6 +30,11 @@
         display-name = "Default Layout";
         transform = <&default_transform>;
     };
+
+    momentary_layer: momentary_layer {
+        compatible = "zmk,behavior-momentary-layer";
+        label = "mom_layer";
+    };
 };
 &xiao_spi { status = "disabled"; };
 &xiao_i2c { status = "disabled"; };
