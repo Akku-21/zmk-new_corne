@@ -1,0 +1,13 @@
+file_format: "1"
+id: eyelash_corne_dongle
+name: Eyelash Corne Dongle
+type: shield
+url: https://github.com/yourusername/your-repo
+requires: [seeeduino_xiao_ble]
+exposes: [i2c_oled]
+features:
+  - keys
+siblings:
+  - eyelash_corne_left
+  - eyelash_corne_right
+  - eyelash_corne_dongle
