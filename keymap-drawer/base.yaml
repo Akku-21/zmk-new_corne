@@ -210,31 +210,31 @@ layers:
     - {type: trans}
     - {type: trans}
     - {type: trans}
-    - {type: trans}
-    - {type: trans}
-    - {type: trans}
-    - {type: trans}
-    - {type: trans}
+    - RGB ON
+    - RGB HUI
+    - RGB SAI
+    - RGB BRI
+    - RGB SPI
     - Boot
     - {type: trans}
     - {type: trans}
     - {type: trans}
     - Boot
+    - RGB EFF
     - {type: trans}
     - {type: trans}
     - {type: trans}
     - {type: trans}
-    - {type: trans}
-    - {type: trans}
-    - {type: trans}
-    - {type: trans}
-    - {type: trans}
-    - {type: trans}
+    - RGB OFF
+    - RGB HUD
+    - RGB SAD
+    - RGB BRD
+    - RGB SPD
     - Reset
     - {type: trans}
     - {type: trans}
     - Reset
-    - {type: trans}
+    - RGB EFR
     - {type: trans}
     - {type: trans}
     - {type: trans}
